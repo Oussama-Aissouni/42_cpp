@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = megaphone.cpp
+FILES = PhoneBook.cpp
 
-NAME = megaphone
+NAME = PhoneBook
 
 all: $(NAME)
 
