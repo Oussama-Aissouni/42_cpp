@@ -52,24 +52,24 @@ void	Search(PhoneBook *PhoneBook, int nb)
 
 	i = 0;
 	std::cout << "   Index   ";
-	std::cout << " FirstName";
-	std::cout << " LastName";
-	std::cout << " Nickname " << std::endl;
+	std::cout << "     FirstName     ";
+	std::cout << "     LastName     ";
+	std::cout << "     Nickname     " << std::endl;
 	while (i < nb)
 	{
 		std::cout << "    " << i + 1 << "     " << "|";
 		if (PhoneBook->Contacts[i].GetFirstName().length() < 10)
-			std::cout << PhoneBook->Contacts[i].GetFirstName() << "|";
+			std::cout << "      " << PhoneBook->Contacts[i].GetFirstName() << "      "  << "|";
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetFirstName()) << "|";
+			std::cout << "      " << truncate(PhoneBook->Contacts[i].GetFirstName()) << "      " << "|";
 		if (PhoneBook->Contacts[i].GetLastName().length() < 10)
-			std::cout << PhoneBook->Contacts[i].GetLastName() << "|";
+			std::cout << "      " << PhoneBook->Contacts[i].GetLastName() << "      "  << "|";
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetLastName()) << "|";
+			std::cout << "      "  << truncate(PhoneBook->Contacts[i].GetLastName()) << "      "  << "|";
 		if (PhoneBook->Contacts[i].GetNickName().length() < 10)
-			std::cout << PhoneBook->Contacts[i].GetNickName() << "|" << std::endl;
+			std::cout << "      " << PhoneBook->Contacts[i].GetNickName() << "      "  << "|" << std::endl;
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetNickName()) << "|" << std::endl;
+			std::cout << "      "  << truncate(PhoneBook->Contacts[i].GetNickName()) << "      "  << "|" << std::endl;
 		i++;
 	}
 	std::cout << "Enter an index" << std::endl;
