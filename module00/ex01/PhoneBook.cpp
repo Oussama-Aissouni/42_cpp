@@ -36,9 +36,19 @@ int	Add(PhoneBook *PhoneBook)
 	return (pos);
 }
 
+std::string truncate(std::string str)
+{
+	std::string ret;
+	ret = str.substr(0, 9);
+	ret.append(".");
+	return (ret);
+}
+
 void	Search(PhoneBook *PhoneBook, int nb)
 {
-	int	i;
+	int			i;
+	int			index_;
+	std::string	index;
 
 	i = 0;
 	std::cout << "   Index   ";
@@ -51,16 +61,34 @@ void	Search(PhoneBook *PhoneBook, int nb)
 		if (PhoneBook->Contacts[i].GetFirstName().length() < 10)
 			std::cout << PhoneBook->Contacts[i].GetFirstName() << "|";
 		else
-			std::cout << "." << "|";
+			std::cout << truncate(PhoneBook->Contacts[i].GetFirstName()) << "|";
 		if (PhoneBook->Contacts[i].GetLastName().length() < 10)
 			std::cout << PhoneBook->Contacts[i].GetLastName() << "|";
 		else
-			std::cout << "." << "|";
+			std::cout << truncate(PhoneBook->Contacts[i].GetLastName()) << "|";
 		if (PhoneBook->Contacts[i].GetNickName().length() < 10)
-			std::cout << PhoneBook->Contacts[i].GetNickName() << "|";
+			std::cout << PhoneBook->Contacts[i].GetNickName() << "|" << std::endl;
 		else
-			std::cout << "." << "|";
+			std::cout << truncate(PhoneBook->Contacts[i].GetNickName()) << "|" << std::endl;
 		i++;
+	}
+	std::cout << "Enter an index" << std::endl;
+	std::getline(std::cin, index);
+	std::stringstream(index) >> index_;
+	if (index_ - 1 >= nb)
+		std::cout << "oooh oooh" << std::endl;
+	else if (index_ < 1 || index_ > 8)
+		std::cout << "oooh oooh" << std::endl;
+	else
+	{
+		i = 0;
+		while (i != index_)
+			i++;
+		std::cout << PhoneBook->Contacts[i - 1].GetFirstName() << std::endl;
+		std::cout << PhoneBook->Contacts[i - 1].GetLastName() << std::endl;
+		std::cout << PhoneBook->Contacts[i - 1].GetNickName() << std::endl;
+		std::cout << PhoneBook->Contacts[i - 1].GetPhoneNumber() << std::endl;
+		std::cout << PhoneBook->Contacts[i - 1].GetDarkestSecret() << std::endl;
 	}
 }
 
@@ -73,16 +101,17 @@ int main()
 	nb = 0;
 	while (1)
 	{
+		std::cout << "Enter an instruction " << std::endl;
 		std::getline(std::cin, buff);
 		if (buff =="ADD")
 			nb = Add(&PhoneBook);
 		else if (buff == "SEARCH")
 			Search(&PhoneBook, nb);
 		else if (buff == "EXIT")
-			exit(0);
+			return(1);
 		else
 		{
-			std::cout << "not valid input" << std::endl;
+			std::cout << "invalid input" << std::endl;
 			break;
 		}
 	}
