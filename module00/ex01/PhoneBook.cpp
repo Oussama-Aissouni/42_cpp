@@ -51,34 +51,36 @@ void	Search(PhoneBook *PhoneBook, int nb)
 	std::string	index;
 
 	i = 0;
-	std::cout << "   Index   ";
-	std::cout << "     FirstName     ";
-	std::cout << "     LastName     ";
-	std::cout << "     Nickname     " << std::endl;
+	
+	std::cout<< std::right << std::setw(10) << "Index";
+	std::cout<< std::right << std::setw(10) << "FirstName";
+	std::cout<< std::right << std::setw(10) << "LastName";
+	std::cout<< std::right << std::setw(10) << "NickName" << std::endl;
 	while (i < nb)
 	{
-		std::cout << "    " << i + 1 << "     " << "|";
+		std::cout << std::setw(10);
+		std::cout << std::right<< std::setw(10)  << i + 1 << "|";
 		if (PhoneBook->Contacts[i].GetFirstName().length() < 10)
-			std::cout << "      " << PhoneBook->Contacts[i].GetFirstName() << "      "  << "|";
+			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetFirstName() << "|";
 		else
-			std::cout << "      " << truncate(PhoneBook->Contacts[i].GetFirstName()) << "      " << "|";
+			std::cout << truncate(PhoneBook->Contacts[i].GetFirstName()) << "|";
 		if (PhoneBook->Contacts[i].GetLastName().length() < 10)
-			std::cout << "      " << PhoneBook->Contacts[i].GetLastName() << "      "  << "|";
+			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetLastName() << "|";
 		else
-			std::cout << "      "  << truncate(PhoneBook->Contacts[i].GetLastName()) << "      "  << "|";
+			std::cout << truncate(PhoneBook->Contacts[i].GetLastName()) << "|";
 		if (PhoneBook->Contacts[i].GetNickName().length() < 10)
-			std::cout << "      " << PhoneBook->Contacts[i].GetNickName() << "      "  << "|" << std::endl;
+			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetNickName() << "|" << std::endl;
 		else
-			std::cout << "      "  << truncate(PhoneBook->Contacts[i].GetNickName()) << "      "  << "|" << std::endl;
+			std::cout << truncate(PhoneBook->Contacts[i].GetNickName()) << "|" << std::endl;
 		i++;
 	}
 	std::cout << "Enter an index" << std::endl;
 	std::getline(std::cin, index);
 	std::stringstream(index) >> index_;
 	if (index_ - 1 >= nb)
-		std::cout << "oooh oooh" << std::endl;
+		std::cout << "index not valid" << std::endl;
 	else if (index_ < 1 || index_ > 8)
-		std::cout << "oooh oooh" << std::endl;
+		std::cout << "index not valid" << std::endl;
 	else
 	{
 		i = 0;
@@ -108,7 +110,7 @@ int main()
 		else if (buff == "SEARCH")
 			Search(&PhoneBook, nb);
 		else if (buff == "EXIT")
-			return(1);
+			return(0);
 		else
 		{
 			std::cout << "invalid input" << std::endl;
