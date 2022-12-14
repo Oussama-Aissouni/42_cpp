@@ -1,9 +1,70 @@
 #include "PhoneBook.hpp"
 
+std::string Contact::GetFirstName()
+{
+	return FirstName;
+}
+
+std::string Contact::GetLastName()
+{
+	return LastName;
+}
+
+std::string Contact::GetNickName()
+{
+	return NickName;
+}
+
+std::string Contact::GetPhoneNumber()
+{
+	return PhoneNumber;
+}
+
+std::string Contact::GetDarkestSecret()
+{
+	return DarkestSecret;
+}
+
+void Contact::SetFirstName(std::string str)
+{
+	FirstName = str;
+}
+
+void Contact::SetLastName(std::string str)
+{
+	LastName = str;
+}
+
+void Contact::SetNickName(std::string str)
+{
+	NickName = str;
+}
+
+void Contact::SetPhoneNumber(std::string str)
+{
+	PhoneNumber = str;
+}
+
+void Contact::SetDarkestSecret(std::string str)
+{
+	DarkestSecret = str;
+}
+
+void	PhoneBook::setContact(int pos, Contact c)
+{
+	Contacts[pos] = c;
+}
+
+Contact PhoneBook::getContact(int i)
+{
+	return Contacts[i];
+}
+
 int	Add(PhoneBook *PhoneBook)
 {
 	static int	pos;
 	static bool	full;
+	Contact		c;
 	std::string	FirstName;
 	std::string	LastName;
 	std::string	NickName;
@@ -19,12 +80,13 @@ int	Add(PhoneBook *PhoneBook)
 	std::cout << "Enter phone number" << std::endl;
 	std::getline(std::cin, PhoneNumber);
 	std::cout << "Enter your darkest secret" << std::endl;
-	std::getline(std::cin >> std::ws, DarkestSecret);
-	PhoneBook->Contacts[pos].SetFirstName(FirstName);
-	PhoneBook->Contacts[pos].SetLastName(LastName);
-	PhoneBook->Contacts[pos].SetNickName(NickName);
-	PhoneBook->Contacts[pos].SetPhoneNumber(PhoneNumber);
-	PhoneBook->Contacts[pos].SetDarkestSecret(DarkestSecret);
+	std::getline(std::cin, DarkestSecret);
+	c.SetFirstName(FirstName);
+	c.SetLastName(LastName);
+	c.SetNickName(NickName);
+	c.SetPhoneNumber(PhoneNumber);
+	c.SetDarkestSecret(DarkestSecret);
+	PhoneBook->setContact(pos, c);
 	pos++;
 	if (pos == 8)
 	{
@@ -52,45 +114,45 @@ void	Search(PhoneBook *PhoneBook, int nb)
 
 	i = 0;
 	
-	std::cout<< std::right << std::setw(10) << "Index";
-	std::cout<< std::right << std::setw(10) << "FirstName";
-	std::cout<< std::right << std::setw(10) << "LastName";
-	std::cout<< std::right << std::setw(10) << "NickName" << std::endl;
+	std::cout<< std::right << std::setw(10) << "Index ";
+	std::cout<< std::right << std::setw(10) << " FirstName ";
+	std::cout<< std::right << std::setw(10) << "  LastName ";
+	std::cout<< std::right << std::setw(10) << "  NickName " << std::endl;
 	while (i < nb)
 	{
 		std::cout << std::setw(10);
 		std::cout << std::right<< std::setw(10)  << i + 1 << "|";
-		if (PhoneBook->Contacts[i].GetFirstName().length() < 10)
-			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetFirstName() << "|";
+		if (PhoneBook->getContact(i).GetFirstName().length() < 11)
+			std::cout << std::right<< std::setw(10) << PhoneBook->getContact(i).GetFirstName() << "|";
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetFirstName()) << "|";
-		if (PhoneBook->Contacts[i].GetLastName().length() < 10)
-			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetLastName() << "|";
+			std::cout << truncate(PhoneBook->getContact(i).GetFirstName()) << "|";
+		if (PhoneBook->getContact(i).GetLastName().length() < 11)
+			std::cout << std::right<< std::setw(10) << PhoneBook->getContact(i).GetLastName() << "|";
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetLastName()) << "|";
-		if (PhoneBook->Contacts[i].GetNickName().length() < 10)
-			std::cout << std::right<< std::setw(10) << PhoneBook->Contacts[i].GetNickName() << "|" << std::endl;
+			std::cout << truncate(PhoneBook->getContact(i).GetLastName()) << "|";
+		if (PhoneBook->getContact(i).GetNickName().length() < 11)
+			std::cout << std::right<< std::setw(10) << PhoneBook->getContact(i).GetNickName() << "|" << std::endl;
 		else
-			std::cout << truncate(PhoneBook->Contacts[i].GetNickName()) << "|" << std::endl;
+			std::cout << truncate(PhoneBook->getContact(i).GetNickName()) << "|" << std::endl;
 		i++;
 	}
 	std::cout << "Enter an index" << std::endl;
 	std::getline(std::cin, index);
 	std::stringstream(index) >> index_;
-	if (index_ - 1 >= nb)
-		std::cout << "index not valid" << std::endl;
-	else if (index_ < 1 || index_ > 8)
-		std::cout << "index not valid" << std::endl;
+	if (index_ < 1 || index_ > 8)
+		std::cout << "index out of range" << std::endl;
+	else if (index_ - 1 >= nb)
+		std::cout << "invalid index" << std::endl;
 	else
 	{
 		i = 0;
 		while (i != index_)
 			i++;
-		std::cout << PhoneBook->Contacts[i - 1].GetFirstName() << std::endl;
-		std::cout << PhoneBook->Contacts[i - 1].GetLastName() << std::endl;
-		std::cout << PhoneBook->Contacts[i - 1].GetNickName() << std::endl;
-		std::cout << PhoneBook->Contacts[i - 1].GetPhoneNumber() << std::endl;
-		std::cout << PhoneBook->Contacts[i - 1].GetDarkestSecret() << std::endl;
+		std::cout << "FirstName : " << PhoneBook->getContact(i - 1).GetFirstName() << std::endl;
+		std::cout << "LastName : " << PhoneBook->getContact(i - 1).GetLastName() << std::endl;
+		std::cout << "NickName : " << PhoneBook->getContact(i - 1).GetNickName() << std::endl;
+		std::cout << "PhoneNumber : " << PhoneBook->getContact(i - 1).GetPhoneNumber() << std::endl;
+		std::cout << "DarkestSecret : " << PhoneBook->getContact(i - 1).GetDarkestSecret() << std::endl;
 	}
 }
 
@@ -113,6 +175,8 @@ int main()
 			return(0);
 		else
 		{
+			if (buff.empty())
+				continue;;
 			std::cout << "invalid input" << std::endl;
 			break;
 		}

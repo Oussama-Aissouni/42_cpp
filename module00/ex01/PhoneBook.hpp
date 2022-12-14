@@ -8,8 +8,10 @@
 
 class PhoneBook
 {
-public:
+private:
 	Contact Contacts[8];
+public:
+	Contact	getContact(int i);
+	void	setContact(int pos, Contact c);
 };
-
 #endif
