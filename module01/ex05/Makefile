@@ -1,12 +1,12 @@
 CC = c++
 
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = #-Wall -Wextra -Werror 
 
 STD = -std=c++98
 
-FILES = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+FILES = main.cpp Harl.cpp
 
-NAME = Weapon
+NAME = Harl
 
 all: $(NAME)
 

@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+FILES = main.cpp
 
-NAME = Weapon
+NAME = Sed
 
 all: $(NAME)
 
