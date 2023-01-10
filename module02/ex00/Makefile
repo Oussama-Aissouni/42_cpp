@@ -1,12 +1,12 @@
 CC = c++
 
-FLAGS = #-Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror
 
-STD = -std=c++98 -fsanitize=address
+STD = -std=c++98
 
-FILES = main.cpp Harl.cpp
+FILES = main.cpp Fixed.cpp 
 
-NAME = Harl
+NAME = ex00
 
 all: $(NAME)
 

@@ -9,16 +9,23 @@ Harl::~Harl()
 void	Harl::complain(std::string level)
 {
 	std::string	levels[4] = {"debug", "info", "warning", "error"};
-
-	void (Harl::*debug) (void);
-	void (Harl::*info) (void);
-	void (Harl::*warning) (void);
-	void (Harl::*error) (void);
-	debug = &Harl::debug;
-	info = &Harl::info;
-	warning = &Harl::warning;
-	error = &Harl::error;
-	void (Harl::*func_ptr[4])() = {debug, info, warning, error};
-	void (Harl::*res)() = func_ptr[0];
-	*res();
+	int	pos = -1;
+	int	i = 0;
+	while (i < 3)
+	{
+		if (level == levels[i])
+		{
+			pos = i;
+			break;
+		}
+		i++;
+	}
+	if (pos == -1)
+		return;
+	void (Harl::*debug)() = &Harl::debug;
+	void (Harl::*info)() = &Harl::info;
+	void (Harl::*warning)() = &Harl::warning;
+	void (Harl::*error)() = &Harl::error;
+	void (Harl::*func_ptr[])() = {debug,info,warning,error};
+	(this->*func_ptr[pos])();
 }
