@@ -1,0 +1,74 @@
+#include "Form.hpp"
+
+Form::Form() : name(NULL), sign_grade(150), exec_grade(150)
+{
+	std::cout << "default constructor called" << std::endl;
+}
+
+Form::Form(std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
+{
+	std::cout << "constructor called" << std::endl;
+	if (sg > 150 || eg > 150)
+		throw Form::GradeTooLowException();
+	else if (sg < 1 || sg < 1)
+		throw Form::GradeTooHighException();
+	this->signed_ = false;
+}
+
+Form::Form(const Form &fixed) : name(fixed.name), sign_grade(fixed.sign_grade), exec_grade(fixed.exec_grade)
+{
+	std::cout << "copy constructor called" << std::endl;
+	*this = fixed;
+}
+
+Form & Form::operator=(const Form &rhs)
+{
+	std::cout << "copy assignement called" << std::endl;
+	if (this != &rhs)
+		this->signed_ = rhs.signed_;
+	return *this;
+}
+
+Form::~Form()
+{
+	std::cout << "destructor called" << std::endl;
+}
+
+std::string Form::getName()
+{
+	return this->name;
+}
+
+bool	Form::getSigned_()
+{
+	return this->signed_;
+}
+
+int		Form::getSignGrade()
+{
+	return this->sign_grade;
+}
+
+int		Form::getexecGrade()
+{
+	return this->exec_grade;
+}
+
+std::ostream & operator<<(std::ostream &output, Form &F)
+{
+	output << "form's name " << F.getName() << "signed " << F.getSigned_() << "sign grade " << F.getSignGrade() << "execute grade " << F.getexecGrade() << std::endl;
+	return output;
+}
+
+void	Form::beSigned(Bureaucrat &B)
+{
+	if (B.getGrade() <= this->getSignGrade())
+		this->signed_ = true;
+	else
+		throw Form::GradeTooLowException();
+}
+
+void	Form::execute(const Bureaucrat &B) const
+{
+	if
+}

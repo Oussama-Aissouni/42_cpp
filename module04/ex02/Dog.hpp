@@ -2,9 +2,12 @@
 #define DOG
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
+private:
+	Brain *brain;
 public:
 	Dog();
 	Dog(const Dog &fixed);
@@ -13,4 +16,3 @@ public:
 	void makeSound() const;
 };
 #endif
-

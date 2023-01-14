@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp 
 
 NAME = Animal
 

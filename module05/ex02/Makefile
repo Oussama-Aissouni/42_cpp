@@ -4,14 +4,14 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+FILES = main.cpp Bureaucrat.cpp form.cpp ShrubberyCreationForm.cpp
 
-NAME = Animal
+NAME = Form
 
 all: $(NAME)
 
 $(NAME) : $(FILES)
-	$(CC) $(FLAGS) $(STD) $(FILES) -o $(NAME)
+	$(CC) $(FLAGS)  $(FILES) -o $(NAME)
 
 clean :
 	@rm $(NAME)

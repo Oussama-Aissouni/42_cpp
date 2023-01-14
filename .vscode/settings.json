@@ -68,6 +68,8 @@
         "memory_resource": "cpp",
         "clocale": "cpp",
         "numeric": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "__functional_03": "cpp",
+        "filesystem": "cpp"
     }
 }
