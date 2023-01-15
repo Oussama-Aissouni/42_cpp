@@ -35,12 +35,12 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor called" << std::endl;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
 	return this->name;
 }
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade() const
 {
 	return this->grade;
 }
@@ -61,13 +61,13 @@ void	Bureaucrat::decrementGrade()
 		this->grade += 1;
 }
 
-std::ostream& operator<<(std::ostream &output, Bureaucrat &B)
+std::ostream& operator<<(std::ostream &output, const Bureaucrat &B)
 {
 	output << B.getName() << ", bureaucrat grade " << B.getGrade() << ".\n";
 	return output;
 }
 
-void Bureaucrat::signForm(Form &F)
+void Bureaucrat::signForm(const Form &F)
 {
 	if (F.getSigned_() == true && this->getGrade() <= F.getSignGrade())
 		std::cout << this->getName() << " signed " << F.getName() << std::endl;

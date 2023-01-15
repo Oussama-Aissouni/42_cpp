@@ -34,22 +34,22 @@ Form::~Form()
 	std::cout << "destructor called" << std::endl;
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
 	return this->name;
 }
 
-bool	Form::getSigned_()
+bool	Form::getSigned_() const
 {
 	return this->signed_;
 }
 
-int		Form::getSignGrade()
+int		Form::getSignGrade() const
 {
 	return this->sign_grade;
 }
 
-int		Form::getexecGrade()
+int		Form::getexecGrade() const
 {
 	return this->exec_grade;
 }
@@ -60,7 +60,7 @@ std::ostream & operator<<(std::ostream &output, Form &F)
 	return output;
 }
 
-void	Form::beSigned(Bureaucrat &B)
+void	Form::beSigned(const Bureaucrat &B)
 {
 	if (B.getGrade() <= this->getSignGrade())
 		this->signed_ = true;

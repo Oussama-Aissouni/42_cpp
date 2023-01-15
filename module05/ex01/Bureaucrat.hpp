@@ -40,14 +40,13 @@ public:
 	Bureaucrat(const Bureaucrat &fixed);
 	Bureaucrat &operator=(const Bureaucrat &rhs);
 	~Bureaucrat();
-	std::string	getName();
-	int			getGrade();
+	std::string	getName() const;
+	int			getGrade() const;
 	void		incrementGrade();
 	void		decrementGrade();
-	void		signForm(Form &F);
+	void		signForm(const Form &F);
 };
 
-std::ostream& operator<<(std::ostream &output, Bureaucrat &B);
+std::ostream& operator<<(std::ostream &output, const Bureaucrat &B);
 
 #endif
-

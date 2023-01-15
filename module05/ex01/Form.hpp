@@ -41,11 +41,11 @@ public:
 	Form(const Form &fixed);
 	Form & operator=(const Form &rhs);
 	~Form();
-	std::string	getName();
-	bool		getSigned_();
-	int			getSignGrade();
-	int			getexecGrade();
-	void		beSigned(Bureaucrat &B);
+	std::string	getName() const;
+	bool		getSigned_() const;
+	int			getSignGrade() const;
+	int			getexecGrade() const;
+	void		beSigned(const Bureaucrat &B);
 };
 
 std::ostream & operator<<(std::ostream &output, Form &F);
