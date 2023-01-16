@@ -6,6 +6,16 @@ Fixed::Fixed()
 	this->value = 0;
 }
 
+Fixed::Fixed(const int num)
+{
+	this->value = num << 8;
+}
+
+Fixed::Fixed(const float num)
+{
+	this->value = roundf((num * 256));
+} 
+
 Fixed::Fixed(const Fixed &fixed)
 {
 	std::cout << "copy constructor called" << std::endl;
@@ -34,4 +44,20 @@ int Fixed::getRawBits() const
 void Fixed::setRawBits( int const raw )
 {
 	this->value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	return (float(this->value / 256));
+}
+
+int	Fixed::toInt(void) const
+{
+	return this->value >> 8;
+}
+
+std::ostream& operator<<(std::ostream& output, const Fixed& obj)
+{
+	output << obj.toFloat();
+	return output;
 }
