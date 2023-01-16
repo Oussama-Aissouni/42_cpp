@@ -13,7 +13,7 @@ Fixed::Fixed(const int num)
 
 Fixed::Fixed(const float num)
 {
-	this->value = roundf((num * 256));
+	this->value = roundf((num * (1 << 8)));
 } 
 
 Fixed::Fixed(const Fixed &fixed)
@@ -48,7 +48,7 @@ void Fixed::setRawBits( int const raw )
 
 float Fixed::toFloat(void) const
 {
-	return (float(this->value / 256));
+	return ((float)this->value / (1 << 8));
 }
 
 int	Fixed::toInt(void) const
