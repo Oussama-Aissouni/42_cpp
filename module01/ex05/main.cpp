@@ -4,6 +4,6 @@ int main()
 {
 	Harl h;
 
-	h.complain("warning");
+	h.complain("error");
 	return 0;
 }

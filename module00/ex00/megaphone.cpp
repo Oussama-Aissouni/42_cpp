@@ -1,6 +1,6 @@
 #include <iostream>
 
-void	print_upper(char *str)
+void	print_upper(std::string str)
 {
 	int	i;
 

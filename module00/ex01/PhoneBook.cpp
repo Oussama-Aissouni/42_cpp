@@ -71,16 +71,36 @@ int	Add(PhoneBook *PhoneBook)
 	std::string	PhoneNumber;
 	std::string	DarkestSecret;
 
-	std::cout << "Enter first name" << std::endl;
-	std::getline(std::cin, FirstName);
-	std::cout << "Enter last name" << std::endl;
-	std::getline(std::cin, LastName);
-	std::cout << "Enter nick name" << std::endl;
-	std::getline(std::cin, NickName);
-	std::cout << "Enter phone number" << std::endl;
-	std::getline(std::cin, PhoneNumber);
-	std::cout << "Enter your darkest secret" << std::endl;
-	std::getline(std::cin, DarkestSecret);
+	while (FirstName.empty())
+	{
+		std::cout << "Enter first name" << std::endl;
+		if (std::getline(std::cin, FirstName).eof())
+			return -1;
+	}
+	while (LastName.empty())
+	{
+		std::cout << "Enter last name" << std::endl;
+		if (std::getline(std::cin, LastName).eof())
+			return -1;
+	}
+	while (NickName.empty())
+	{
+		std::cout << "Enter nick name" << std::endl;
+		if (std::getline(std::cin, NickName).eof())
+			return -1;
+	}
+	while (PhoneNumber.empty())
+	{
+		std::cout << "Enter phone number" << std::endl;
+		if (std::getline(std::cin, PhoneNumber).eof())
+			return -1;
+	}
+	while (DarkestSecret.empty())
+	{
+		std::cout << "Enter your darkest secret" << std::endl;
+		if (std::getline(std::cin, DarkestSecret).eof())
+			return -1;
+	}
 	c.SetFirstName(FirstName);
 	c.SetLastName(LastName);
 	c.SetNickName(NickName);
@@ -166,7 +186,8 @@ int main()
 	while (1)
 	{
 		std::cout << "Enter an instruction " << std::endl;
-		std::getline(std::cin, buff);
+		if (std::getline(std::cin, buff).eof())
+			break;
 		if (buff =="ADD")
 			nb = Add(&PhoneBook);
 		else if (buff == "SEARCH")
@@ -180,6 +201,8 @@ int main()
 			std::cout << "invalid input" << std::endl;
 			break;
 		}
+		if (nb == -1)
+			break;
 	}
 	return (0);
 }
