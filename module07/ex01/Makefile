@@ -11,7 +11,7 @@ NAME = iter
 all: $(NAME)
 
 $(NAME) : $(FILES)
-	$(CC) $(FLAGS)  $(FILES) -o $(NAME)
+	$(CC) $(FLAGS) $(STD) $(FILES) -o $(NAME)
 
 clean :
 	@rm $(NAME)
