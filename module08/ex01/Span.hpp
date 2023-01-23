@@ -19,6 +19,17 @@ public:
 	int longestSpan();
 	void addNumber(int num);
 	void addNumber(int start, int end);
+
+	class Customexception : public std::exception
+	{
+		public :
+			Customexception(){}
+			~Customexception() throw(){}
+			const char *what() const throw()
+			{
+				return "no values";
+			}
+	};
 };
 
 

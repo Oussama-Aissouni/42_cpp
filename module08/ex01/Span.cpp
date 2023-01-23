@@ -33,23 +33,32 @@ void Span::addNumber(int num)
 
 int Span::shortestSpan()
 {
+	if (v.empty() || v.size() == 1)
+		throw Customexception();
 	unsigned int i = 0;
 	int span = -1;
 	std::sort(v.begin(), v.end());
-	std::cout << v.size() << std::endl;
 	while (i < v.size() - 1)
 	{
-		if (v[i] - v[i + 1] >= span)
-			span = v[i] - v[i + 1];
+		if(span == -1)
+		{
+			span = v[i + 1] - v[i] ;
+			continue;
+		}
+		if (v[i + 1] - v[i] <= span)
+			span = v[i + 1] - v[i] ;
 		i++;
 	}
 	return span;
 }
 
-// int Span::longestSpan()
-// {
-
-// }
+int Span::longestSpan()
+{
+	if (v.empty() || v.size() == 1)
+		throw Customexception();
+	std::sort(v.begin(), v.end());
+	return (v[v.size() - 1] - v[0]);
+}
 
 void Span::addNumber(int start, int end)
 {
