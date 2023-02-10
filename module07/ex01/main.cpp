@@ -1,23 +1,16 @@
 #include "iter.hpp"
 
-class Awesome
+template <typename T> void func (T &x)
 {
-private:
-	int _n;
-public:
-	Awesome( ) : _n(42) {return;}
-	int get(void) const {return this->_n;}
-	~Awesome(){}
-};
-
-std::ostream & operator<< (std::ostream &o, const Awesome &rhs) {o << rhs.get(); return o;}
+	std::cout << x << std::endl;
+}
 
 int main( void )
 {
 	int arr[] = {0,1,2,3,4};
-	Awesome arr2[5];
+	std::string arr1[] = {"hello", "salam" , "hola"};
 
-	iter(arr, 5, print);
-	iter(arr2, 5, print);
+	iter(arr, 5, func);
+	iter(arr1, 3, func);
 	return 0;
 }

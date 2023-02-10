@@ -9,32 +9,43 @@ template <class T> class Array
 		size_t	n;
 		T *arr;
 	public :
-		Array() {arr = new T[0];}
-		Array(size_t n_) : n(n_) {arr = new T[n]; for (size_t i = 0; i < n; i++) arr[i] = (T)NULL;
+		Array() : n(0)
+		{
+			arr = new T[0];
 		}
-		Array(const Array& fixed){*this =fixed;}
-		Array & operator=(const Array& rhs){
+		Array(size_t n_) : n(n_)
+		{
+			arr = new T[n];
+			for (size_t i = 0; i < n; i++) 
+				arr[i] = T();
+		}
+		Array(const Array& fixed) : arr(NULL)
+		{
+			*this =fixed;
+		}
+		Array & operator=(const Array& rhs)
+		{
+			delete this->arr;
 			this->arr = new T[rhs.n];
-			for (size_t i = 0; i < n; i++)
-			{
-				if (i == rhs.n)
-					throw OutOfBounds();
+			this->n = rhs.n;
+			for (size_t i = 0; i < rhs.n; i++)
 				this->arr[i] = rhs.arr[i];
-			}
 			return *this;
 		}
-		T & operator[](size_t idx){
+		T & operator[](size_t idx)
+		{
 			if (idx > this->n)
 				throw OutOfBounds();
-			return arr[idx - 1];
+			return arr[idx];
 		}
-		const T & operator[](size_t idx) const{
+		const T & operator[](size_t idx) const
+		{
 			if (idx > this->n)
 				throw OutOfBounds();
-			return arr[idx - 1];
+			return arr[idx];
 		}
 		~Array(){}
-		int size() const{return n;}
+		size_t size() const{return n;}
 
 		class OutOfBounds : public std::exception
 		{

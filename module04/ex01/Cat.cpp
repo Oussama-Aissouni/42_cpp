@@ -16,6 +16,7 @@ Cat::~Cat()
 Cat::Cat(const Cat &fixed)
 {
 	std::cout << "cat copy constructor called" <<std::endl;
+	this->brain = new Brain();
 	*this = fixed;
 }
 
@@ -25,9 +26,7 @@ Cat & Cat::operator=(const Cat &rhs)
 	if(this != &rhs)
 	{
 		this->type = rhs.type;
-		this->brain = new Brain();
-		for (int i = 0; i < 100; i++)
-			brain->ideas[i] = rhs.brain->ideas[i];
+		*brain = *rhs.brain;
 	}
 	return *this;
 }

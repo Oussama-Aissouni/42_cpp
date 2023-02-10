@@ -1,5 +1,5 @@
 #include "ClapTrap.hpp"
-//calonical form
+
 ClapTrap::ClapTrap() : hp(10), ep(10), ad(0)
 {
 	std::cout << "default constructor called" << std::endl;
@@ -7,7 +7,7 @@ ClapTrap::ClapTrap() : hp(10), ep(10), ad(0)
 
 ClapTrap::ClapTrap(std::string name) : hp(10), ep(10), ad(0)
 {
-	this->setName(name);
+	this->name = name;
 	std::cout << "name constructor called" << std::endl;
 }
 
@@ -19,10 +19,7 @@ ClapTrap::~ClapTrap()
 ClapTrap::ClapTrap(const ClapTrap &fixed)
 {
 	std::cout << "copy constructor called" << std::endl;
-	this->ad = fixed.ad;
-	this->ep = fixed.ep;
-	this->hp = fixed.hp;
-	this->name = fixed.name;
+	*this = fixed;
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &rhs)
@@ -78,28 +75,37 @@ void ClapTrap::attack(const std::string& target)
 		this->ep -= 1;
 	}
 	else
-		std::cout << "no energy left" << std::endl;
+		std::cout << "can't do it" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if (hp == 0 || ep == 0)
+	{
+		std::cout << "can't do it" << std::endl;
+		return;
+	}
 	if ((this->hp - (int)amount) < 0)
 	{
 		hp = 0;
 		return ;
 	}
-	std::cout << "ClapTrap took damage" << std::endl;
 	this->hp -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if ((int)(amount + this->hp) > this->getHp() && this->ep > 0)
+	{
+		this->hp = 10;
+		this->ep -= 1;
+		return;
+	}
 	if (this->ep > 0 && this->hp > 0)
 	{
-		std::cout << "ClapTrap is repaired" << std::endl;
 		this->hp += amount;
 		this->ep -= 1;
+		return;
 	}
-	else
-		std::cout << "no energy left" << std::endl;
+	std::cout << "can't do it" << std::endl;
 }

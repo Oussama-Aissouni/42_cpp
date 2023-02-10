@@ -2,13 +2,14 @@
 #define PRESIDENTIAL
 
 #include "Form.hpp"
+#include "cstdlib"
 
 class PresidentialPardonForm : public Form
 {
 private:
 	std::string target;
-public:
 	PresidentialPardonForm();
+public:
 	PresidentialPardonForm(std::string target_);
 	PresidentialPardonForm(const PresidentialPardonForm &fixed);
 	PresidentialPardonForm &operator=(const PresidentialPardonForm &rhs);

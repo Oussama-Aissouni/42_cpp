@@ -14,9 +14,9 @@ $(NAME) : $(FILES)
 	$(CC) $(FLAGS) $(STD) $(FILES) -o $(NAME)
 
 clean :
-	@rm $(NAME)
+	@rm -f $(NAME)
 
 fclean :
-	@rm $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all

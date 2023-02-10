@@ -1,14 +1,17 @@
 #ifndef SPAN
 #define SPAN
 
-#include "iostream"
-#include "algorithm"
-#include "vector"
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <stdexcept>
 
 class Span
 {
 private:
-	std::vector<int> v; 
+	std::vector<int> v;
+	size_t size;
+	size_t elem_num;
 	Span();
 public:
 	Span(unsigned int N);

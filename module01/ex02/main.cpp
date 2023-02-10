@@ -3,7 +3,7 @@
 
 int main()
 {
-	std::string str = "hi this is brain";
+	std::string str = "HI THIS IS BRAIN";
 	std::string	*stringPTR = &str;
 	std::string	&stringREF = str;
 

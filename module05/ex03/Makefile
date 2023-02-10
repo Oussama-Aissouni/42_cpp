@@ -6,7 +6,7 @@ STD = -std=c++98
 
 FILES = main.cpp Bureaucrat.cpp form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 
-NAME = Form
+NAME = Intern
 
 all: $(NAME)
 

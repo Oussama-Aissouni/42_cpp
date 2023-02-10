@@ -2,9 +2,8 @@
 
 Base* generate(void)
 {
+	srand(time(nullptr));
 	int random = rand() % 3;
-
-	std::cout << "->" << random << std::endl;
 
 	if (random == 0)
 		return (new A());
@@ -54,25 +53,12 @@ void identify(Base& p)
 	}
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
 	Base *ptr;
 
 	ptr = generate();
 	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
-	ptr = generate();
-	identify(*ptr);
+	identify(ptr);
 	return 0;
 }

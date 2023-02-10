@@ -13,14 +13,14 @@ Data* deserialize(uintptr_t raw)
 int main()
 {
 	Data *A;
+	Data *B;
 
-	A = (Data*)malloc(sizeof(Data));
+	A = new Data;
 	A->a = 5;
-	A->b = 4;
-	std::cout << &A << std::endl;
-	deserialize(serialize(A));
-	std::cout << &A << std::endl;
-	// std::cout << A->a << std::endl;
-
+	A->b = 4.1;
+	B = deserialize(serialize(A));
+ 	std::cout << B->a << std::endl;
+	std::cout << B->b << std::endl;
+	delete A;
 	return 0;
 }

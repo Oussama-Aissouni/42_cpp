@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = main.cpp ClapTrap.cpp FragTrap.cpp
+FILES = main.cpp
 
-NAME = FragTrap
+NAME = Conv
 
 all: $(NAME)
 

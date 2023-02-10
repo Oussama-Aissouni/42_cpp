@@ -1,25 +1,34 @@
 #include "Span.hpp"
 
-Span::Span()
+Span::Span() : size(0) , elem_num(0)
 {
 	// std::cout << "default constructor called" << std::endl;
 }
 
-Span::Span(unsigned int N)
+Span::Span(unsigned int _size) : elem_num(0)
 {
 	// std::cout << "parameter constructor called" << std::endl;
-	this->v.reserve(N);
+	v.reserve(_size);
+	this->size = _size;
 }
 
-// Span::Span(const Span& fixed)
-// {
-// 	// std::cout << "copy constructor called" << std::endl;
-// }
+Span::Span(const Span& fixed)
+{
+	// std::cout << "copy constructor called" << std::endl;
+	*this  = fixed;
+}
 
-// Span& Span::operator=(const Span& rhs)
-// {
-// 	// std::cout << "copy operator called" << std::endl;
-// }
+Span& Span::operator=(const Span& rhs)
+{
+	// std::cout << "copy assignment operator called" << std::endl;
+	if (this != &rhs)
+	{
+		this->size = rhs.size;
+		this->elem_num = rhs.elem_num;
+		this->v = rhs.v;
+	}
+	return *this;
+}
 
 Span::~Span()
 {
@@ -28,17 +37,20 @@ Span::~Span()
 
 void Span::addNumber(int num)
 {
+	if (elem_num >= size)
+		throw std::length_error("7dek tem");
 	this->v.push_back(num);
+	this->elem_num += 1;
 }
 
 int Span::shortestSpan()
 {
-	if (v.empty() || v.size() == 1)
+	if (elem_num == 0 || size == 1)
 		throw Customexception();
 	unsigned int i = 0;
 	int span = -1;
 	std::sort(v.begin(), v.end());
-	while (i < v.size() - 1)
+	while (i < elem_num - 1)
 	{
 		if(span == -1)
 		{
@@ -54,21 +66,21 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
-	if (v.empty() || v.size() == 1)
+	if (elem_num == 0 || size == 1)
 		throw Customexception();
 	std::sort(v.begin(), v.end());
-	return (v[v.size() - 1] - v[0]);
+	return (v[elem_num - 1] - v[0]);
 }
 
 void Span::addNumber(int start, int end)
 {
-	if (start <= end)
+	if (start > end)
+		throw std::length_error("mn nytek");
+	for (int i = start; i <= end; i++)
 	{
-		std::cout << "mn nytek" << std::endl;
-		return;
-	}
-	for (int i = start; i < end; i++)
-	{
+		if (elem_num >= size)
+			throw std::length_error("7dek tem");
 		this->v.push_back(i);
+		this->elem_num += 1;
 	}
 }

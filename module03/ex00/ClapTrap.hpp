@@ -10,7 +10,6 @@ class ClapTrap
 		int hp;
 		int ep;
 		int ad;
-
 	public :
 		//calonical form
 		ClapTrap();

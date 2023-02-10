@@ -35,8 +35,8 @@ private:
 	const std::string	name;
 	const int			sign_grade;
 	const int			exec_grade;
-public:
 	Form();
+public:
 	Form(std::string name, int sg, int eg);
 	Form(const Form &fixed);
 	Form & operator=(const Form &rhs);

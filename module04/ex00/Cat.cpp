@@ -11,19 +11,17 @@ Cat::~Cat()
 	std::cout << "cat destructor called" <<std::endl;
 }
 
-Cat::Cat(const Cat &fixed) : Animal::Animal(fixed)
+Cat::Cat(const Cat &fixed)
 {
 	std::cout << "cat copy constructor called" <<std::endl;
+	*this = fixed;
 }
 
 Cat & Cat::operator=(const Cat &rhs)
 {
 	std::cout << "cat copy assignement operator called" << std::endl;
 	if(this != &rhs)
-	{
-		Cat::operator=(rhs);
 		this->type = rhs.type;
-	}
 	return *this;
 }
 

@@ -2,10 +2,6 @@
 
 int main()
 {
-	FragTrap obj1;
-	FragTrap obj2("salam");
-
-	obj1.attack("khribga");
-	obj2.attack("benguerir");
+	FragTrap obj("as");
 	return 0;
 }

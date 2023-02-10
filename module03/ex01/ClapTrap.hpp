@@ -5,12 +5,11 @@
 
 class ClapTrap
 {
-	private :
+	protected :
 		std::string name;
 		int hp;
 		int ep;
 		int ad;
-
 	public :
 		//calonical form
 		ClapTrap();

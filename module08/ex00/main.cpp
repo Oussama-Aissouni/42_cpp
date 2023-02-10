@@ -12,7 +12,7 @@ int main()
 			l.push_back(i);
 		}
 		easyfind(v, 4);
-		easyfind(l, 5);
+		easyfind(l, -8);
 		return 0;
 	}
 	catch(const std::exception& e)

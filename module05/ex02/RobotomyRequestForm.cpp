@@ -39,6 +39,11 @@ void RobotomyRequestForm::execute(const Bureaucrat & executor) const
 	if (this->getSigned_() == false)
 		throw FormNotSigned();
 	else if (executor.getGrade() > this->getexecGrade())
-		throw RobotomyFailedException();
-	std::cout << "drilling sounds ..."<< std::endl << this->target << " has been robotomized successfully 50% of the time" << std::endl;
+		throw GradeTooLowException();
+	srand(time(nullptr));
+	int random = rand() % 2;
+	if (random == 0)
+		std::cout << "drilling sounds ... "<< this->target << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << "Robotomy failed" << std::endl;
 }

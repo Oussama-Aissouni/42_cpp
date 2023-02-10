@@ -12,7 +12,7 @@ Fixed::Fixed(const Fixed &fixed)
 	*this = fixed;
 }
 
-Fixed & Fixed::operator = (const Fixed &rhs)
+Fixed & Fixed::operator=(const Fixed &rhs)
 {
 	std::cout << "copy assignement operator called" << std::endl;
 	if (this != &rhs)

@@ -19,5 +19,10 @@ void HumanB::setWeapon(Weapon& weapon)
 
 void HumanB::attack()
 {
+	if (!weapon)
+	{
+		std::cout << "ma3dooch" << '\n';
+		return ;
+	}
 	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
 }

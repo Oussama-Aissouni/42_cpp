@@ -6,7 +6,7 @@ STD = -std=c++98
 
 FILES = main.cpp Span.cpp
 
-NAME = easyfind
+NAME = span
 
 all: $(NAME)
 

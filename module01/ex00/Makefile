@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = zombie.cpp main.cpp newZombie.cpp randomChump.cpp
+FILES = Zombie.cpp main.cpp newZombie.cpp randomChump.cpp
 
 NAME = zombie
 

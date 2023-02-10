@@ -8,7 +8,7 @@ Animal::Animal()
 Animal::Animal(const Animal &fixed)
 {
 	std::cout << "Animal copy constructor called" << std::endl;
-	this->type = fixed.type;
+	*this = fixed;
 }
 
 Animal & Animal::operator=(const Animal &rhs)
@@ -34,7 +34,7 @@ void Animal::setType(std::string type)
 	this->type = type;
 }
 
- void Animal::makeSound() const
+void Animal::makeSound() const
 {
 	std::cout << "animal makes sound" << std::endl;
 }

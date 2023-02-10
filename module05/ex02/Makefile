@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 
 STD = -std=c++98
 
-FILES = main.cpp Bureaucrat.cpp form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+FILES = main.cpp Bureaucrat.cpp form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 NAME = Form
 

@@ -9,6 +9,7 @@ int main()
 		Form *rrf;
 
 		rrf = someGuy.makeForm("shrubbery creation", "christmas tree");
+		rrf = someGuy.makeForm("presidential pardon", "person1");
 		rrf = someGuy.makeForm("robotomy request", "robot");
 		rrf->beSigned(a);
 		a.executeForm(*rrf);

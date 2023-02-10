@@ -2,13 +2,31 @@
 
 int main()
 {
-	ScavTrap obj1("salam");
-	ScavTrap obj2(obj1);
-	ScavTrap obj3;
+	{
+		ScavTrap obj("9awiy");
+		ScavTrap obj1("9awiy1");
 
-	obj3 = obj2;
-	obj1.attack("khribga");
-	obj2.attack("benguerir");
-	obj3.attack("kech");
+		obj.takeDamage(10);
+		obj.attack("da3if");
+		std::cout << "hp = " << obj.getHp() << " ep = " << obj.getEp() << std::endl;
+		obj.takeDamage(100);
+		std::cout << "hp = " << obj.getHp() << " ep = " << obj.getEp() << std::endl;
+		obj1.guardGate();
+	}
+	{
+		ScavTrap obj("9awiy");
+		ScavTrap obj1(obj);
+
+		std::cout << "hp = " << obj1.getHp() << " ep = " << obj1.getEp() << " ad = " << obj1.getAd()<< std::endl;
+		obj1.guardGate();
+	}
+	{
+		ScavTrap obj("9awiy");
+		ScavTrap obj1;
+
+		obj1 = obj;
+		std::cout << "hp = " << obj1.getHp() << " ep = " << obj1.getEp() << " ad = " << obj1.getAd()<< std::endl;
+		obj1.guardGate();
+	}
 	return 0;
 }

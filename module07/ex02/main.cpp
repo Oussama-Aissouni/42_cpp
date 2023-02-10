@@ -4,25 +4,29 @@ int main( void )
 {
 	try
 	{
-		// int *a = new int();
-		// std::cout << *a << std::endl;
-		// Array<int> *arr = new Array<int>(5);
-		// Array<int> *arr1 = new Array<int>(7);
-		// for (int i = 0; i < arr->size(); i++)
-		// {
-		// 	std::cout << &arr[i] << std::endl;
-		// }
-		// Array<int> arr(4);
-		// for (int i = 0; i < arr.size(); i++)
-		// 	arr[i] = i;
-		// for (int i = 0; i < arr.size(); i++)
-		// 	std::cout << arr[i] << std::endl;
+		Array<std::string> arr(10);
+		for (size_t i = 0; i < arr.size(); i++)
+			arr[i] = "elem";
+		for (size_t i = 0; i < arr.size(); i++)
+			std::cout << arr[i] << std::endl;
+		
+		Array<int> arr1(4);
+		{
+			Array<int> arr(5);
 
-		// Array<int> arr1(4);
+			for (size_t i = 0; i < arr1.size(); i++)
+				arr1[i] = i;
+			arr = arr1;
+			for (size_t i = 0; i < arr1.size(); i++)
+			{
+				std::cout << arr1[i] << std::endl;
+				std::cout << arr[i] << std::endl;
+			}
+		}
 
-		// arr1 = arr;
-		// for (int i = 0; i < arr1.size(); i++)
-		// 	std::cout << arr1[i] << std::endl;
+		Array<int> arr2;
+		arr2[0] = 0;
+		arr2[1] = 0;
 	}
 	catch(const std::exception& e)
 	{

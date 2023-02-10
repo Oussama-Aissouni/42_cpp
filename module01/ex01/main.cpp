@@ -5,7 +5,9 @@ int main()
 	Zombie	*z;
 
 	z = zombieHorde(5, "HOPLA");
-	z[4].announce();
+	z->announce();
+	for (int i = 0; i < 5; i++)
+		z[i].announce();
 	delete[] z;
 	return 0;
 }

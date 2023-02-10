@@ -6,7 +6,7 @@ STD = -std=c++98
 
 FILES = main.cpp
 
-NAME = Array
+NAME = array
 
 all: $(NAME)
 

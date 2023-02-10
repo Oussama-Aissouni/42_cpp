@@ -34,8 +34,8 @@ class Bureaucrat
 private:
 	const	std::string name;
 	int		grade;
-public:
 	Bureaucrat();
+public:
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat &fixed);
 	Bureaucrat &operator=(const Bureaucrat &rhs);
